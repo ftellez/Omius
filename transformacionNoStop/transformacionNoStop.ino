@@ -1,8 +1,4 @@
-
-
 #define PINEND 11
-
-
 #define R1 2.2
 #define percent 1.0
 //#define VBOOST 3.5
