@@ -81,7 +81,7 @@ void setup() {
   
   Serial.println("CONFIG SUCCESSFUL");
   Serial.println("INICIA PRUEBA");
-  Serial.println("Tiempo / Corriente / Voltaje / Resistencia / Switch / Varianza / Desv Stand");
+  Serial.println("Tiempo / Corriente / Voltaje / Resistencia / Switch / Varianza / Desv Stand / Sample / Squared");
 
 }
 
@@ -147,7 +147,11 @@ void entry(float debug_s) {
     Serial.print(K);
     //Serial.print("Desviación Estándar: ");
     Serial.print(",");
-    Serial.println(D);
+    Serial.print(D);
+    Serial.print(",");
+    Serial.print(sample);
+    Serial.print(",");
+    Serial.println(squared); 
     dynamicQueue(debug_s);
     //delay(1000);
   }
