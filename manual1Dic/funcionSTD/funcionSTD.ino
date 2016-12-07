@@ -25,6 +25,30 @@
 */
 
 /*  Python program to calculate the variance:
+ * 
+ *    k = 0
+ *    n = 0
+ *    ex = 0
+ *    ex2 = 0
+ *    
+ *    add_variable(x)
+ *    if (n == 0)
+ *      K = x
+ *    n = n + 1
+ *    ex = ex + x - K
+ *    ex2 = ex2 + (x - K)*(x - K)
+ *    
+ *    remove_variable(x)
+ *    n = n - 1
+ *    ex = ex -  (x - K)
+ *    ex2 = ex2 - (x - K)*(x - K)
+ *    
+ *    get_meanvalue(x)
+ *    return K + ex / n
+ *    
+ *    get_variance(x) 
+ *    return (ex2 - (ex * ex) / n) / (n - 1)
+ */
 
       k = 0
       n = 0
