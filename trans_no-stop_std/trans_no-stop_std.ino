@@ -47,6 +47,7 @@ int squared = 0;
 int sample = 0;       // sample
 int window = 5;       // sample size
 int number_count = 0;
+int mean = 0;
 boolean init2 = true;
 
 // Variables & Definitions       
@@ -110,6 +111,9 @@ void loop() {
 
     float debug = current*1000;  
 
+    if (number_count == 0)
+      mean = debug;
+
     vestoma = VBOOST - vout;
 
     //3. Resistance.
@@ -126,6 +130,8 @@ void loop() {
     Serial.print(expand);
 
     entry(debug);
+
+    Serial.println();
 
     thisTime = millis();    // Register time end of loop.
   }
@@ -151,7 +157,7 @@ void entry(float debug_s) {
     Serial.print(",");
     Serial.print(sample);
     Serial.print(",");
-    Serial.println(squared); 
+    Serial.print(squared); 
     dynamicQueue(debug_s);
     //delay(1000);
   }
@@ -175,12 +181,12 @@ void dynamicQueue(float a) {
 }
 
 void calcSum(float x) {
-  squared += x * x;
-  sample  += x;
+  squared += (x-mean) * (x-mean);
+  sample  += (x - mean);
 }
 
 void calcSubs(float x) {
-  squared -= x * x;
-  sample  -= x;
+  squared -= (x-mean) * (x-mean);
+  sample  -= (x-mean);
 }
 
