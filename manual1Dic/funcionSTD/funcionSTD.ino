@@ -48,9 +48,6 @@
  *    
  *    get_variance(x) 
  *    return (ex2 - (ex * ex) / n) / (n - 1)
- *    
- *    
- *    
  */
 
 #include <QueueArray.h>
