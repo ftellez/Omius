@@ -6,52 +6,52 @@
 // de librerias de Arduino para que el codigo compile
 
 /*
- * Calculo de varianza
- * Busca evitar efecto de cancelación cuando SumSqr y Sum*Sum
- * son muy similares. 
- * 
- * Se usa una propiedad de la varianza Var(X - k) = Var(X), 
- * donde k es una constante cualquiera. 
- * 
- * La nueva fórmula es: 
- * s^2 = (((sum i->n)(xi-K)^2)-((sum i->n)(xi-K)^2)/n)/(n-1)
- * 
- * Si K es cercana al promedio el resultado sera más preciso, 
- * pero escoger un valor dentro de los samples garantizará 
- * estabilidad. 
- * 
- * La compensasión de sumas se utiliza para combatir el error en
- * la acumulación de sumas, cuando n es un número grande. 
- */
- 
+   Calculo de varianza
+   Busca evitar efecto de cancelación cuando SumSqr y Sum*Sum
+   son muy similares.
+
+   Se usa una propiedad de la varianza Var(X - k) = Var(X),
+   donde k es una constante cualquiera.
+
+   La nueva fórmula es:
+   s^2 = (((sum i->n)(xi-K)^2)-((sum i->n)(xi-K)^2)/n)/(n-1)
+
+   Si K es cercana al promedio el resultado sera más preciso,
+   pero escoger un valor dentro de los samples garantizará
+   estabilidad.
+
+   La compensasión de sumas se utiliza para combatir el error en
+   la acumulación de sumas, cuando n es un número grande.
+*/
+
 /*  Python program to calculate the variance:
- * 
- *    k = 0
- *    n = 0
- *    ex = 0
- *    ex2 = 0
- *    
- *    add_variable(x)
- *    if (n == 0)
- *      K = x
- *    n = n + 1
- *    ex = ex + x - K
- *    ex2 = ex2 + (x - K)*(x - K)
- *    
- *    remove_variable(x)
- *    n = n - 1
- *    ex = ex -  (x - K)
- *    ex2 = ex2 - (x - K)*(x - K)
- *    
- *    get_meanvalue(x)
- *    return K + ex / n
- *    
- *    get_variance(x) 
- *    return (ex2 - (ex * ex) / n) / (n - 1)
- *    
- *    
- *    
- */
+
+      k = 0
+      n = 0
+      ex = 0
+      ex2 = 0
+
+      add_variable(x)
+      if (n == 0)
+        K = x
+      n = n + 1
+      ex = ex + x - K
+      ex2 = ex2 + (x - K)*(x - K)
+
+      remove_variable(x)
+      n = n - 1
+      ex = ex -  (x - K)
+      ex2 = ex2 - (x - K)*(x - K)
+
+      get_meanvalue(x)
+      return K + ex / n
+
+      get_variance(x)
+      return (ex2 - (ex * ex) / n) / (n - 1)
+
+
+
+*/
 
 #include <QueueArray.h>
 
